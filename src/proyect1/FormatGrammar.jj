@@ -2,9 +2,11 @@
  * JavaCC template file created by SF JavaCC plugin 1.5.28+ wizard for JavaCC 1.5.0+
  */options{  static = true;}PARSER_BEGIN(Grammar)package proyect1;
 
-public class Grammar{  public static void main(String args []) throws ParseException  {    Grammar parser = new Grammar(System.in);    while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");      try      {        switch (Grammar.one_line())        {          case 0 :           System.out.println("OK.");          break;          case 1 :           System.out.println("Goodbye.");          break;          default :           break;        }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        Grammar.ReInit(System.in);      }      cat`ch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }    }  }}PARSER_END(Grammar)SKIP :{
- 	"\t"		}TOKEN : /* OPERATORS */{
-  <FIELDVALUE :  "{"(~["\n","\r"])+ "}">
+public class Grammar{  public static void main(String args []) throws ParseException  {    Grammar parser = new Grammar(System.in);    while (true)    {      System.out.println("Reading from standard input...");      System.out.print("Enter an expression like \"1+(2+3)*4;\" :");      try      {        switch (Grammar.one_line())        {          case 0 :           System.out.println("OK.");          break;          case 1 :           System.out.println("Goodbye.");          break;          default :           break;        }      }      catch (Exception e)      {        System.out.println("NOK.");        System.out.println(e.getMessage());        Grammar.ReInit(System.in);      }      catch (Error e)      {        System.out.println("Oops.");        System.out.println(e.getMessage());        break;      }  }}}
+PARSER_END(Grammar)SKIP:{
+ 		"\r" | "\t" | "\n" |""		}TOKEN : /* OPERATORS */{
+  < CORCHAB: "{" >
+| < CORCHCIER: " }" >
 | < ARROBA : "@" >| < IGUAL : "=" >| < ARTICLE : "article" >| < BOOK : "book" >
 | < BOOKLET : "booklet">
 | < CONFERENCE :"conference">
@@ -19,7 +21,7 @@ public class Grammar{  public static void main(String args []) throws ParseExc
 | < TECHREPORT: "techreport">
 | < UNPUBLISHED: "unpublished">
 | < AUTHOR: "Author =">
-| < TITLE: Ttitle =">
+| < TITLE: "Title =">
 | < JOURNAL:"Journal =">
 | < YEAR:"Year =">
 | < VOLUME:"Volume =">
@@ -42,59 +44,124 @@ public class Grammar{  public static void main(String args []) throws ParseExc
 | < ORGANIZATION: "Organization =">
 | < SCHOOL: "School =">
 | < INSTITUTION: "Institution =">
-| < COMA: ",">}TOKEN :{  < NUMEROS : "{"(< DIGIT >)+"--"(< DIGIT >)*"}">| < #DIGIT : [ "0"-"9" ] >
+| < COMA: ",">}TOKEN :{  < NUMEROS : "{"(< DIGIT >)+("--"< DIGIT >)*"}">| < #DIGIT : [ "0"-"9" ] >
 | < #MAYUS : ["A"-"Z"]>
 | < #MINUS : ["a"-"z"]>
+| < MINUSCULAS: (< MINUS >)+ >
 | < NTERM: (<MAYUS>(<MAYUS>|<MINUS>)*)>
-| < TERM: "{"(<MAYUS> (<MINUS>)*)"}">}
-void article ():
-{}
+| < TERM: "{"(<MAYUS> (<MINUS>)* (","< MAYUS >(< MINUS >)*)*)"}">}
+void inic(): { }
 {
-  <AUTHOR><TERM><COMA><TITLE><TERM><COMA><JOURNAL><TERM><COMA><YEAR><NUMEROS><COMA><VOLUME><NUMEROS>[<COMA><NUMBER><NUMEROS><COMA><PAGES><NUMEROS><COMA>
-  <MONTH><TERM><COMA><DOI><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]}
-void book ():
-{}
+	< ARROBA >( < ARTICLE >| < BOOK  >| < BOOKLET >| < CONFERENCE >| < INBOOK>
+| < INCOLLECTION>| < INPROCEEDINGS>| < MANUAL>| < MASTERTHESIS>| < MISC>| < PHDTHESIS>
+| < PROCEEDINGS>| < TECHREPORT>| < UNPUBLISHED> )< CORCHAB ><MINUSCULAS><NUMEROS >(< MINUSCULAS >)*< COMA >
+( article() |  book () | booklet() | conference() | inbook () | incollection () | inproceedings() | manual()
+| masterthesis() | misc() | phdthesis() | proceedings() | techreport() |unpublished() ) < CORCHCIER >
+	
+}
+
+
+
+void article ():{}
+{
+  <AUTHOR><TERM><COMA><TITLE><TERM><COMA><JOURNAL><TERM><COMA><YEAR><NUMEROS><COMA><VOLUME><NUMEROS>[<COMA><NUMBER><NUMEROS>][
+  <COMA><PAGES><NUMEROS>][<COMA> <MONTH><TERM>][<COMA><DOI><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]}
+
+void book ():{}
 {
   	(<AUTHOR><TERM><COMA><TERM><COMA>|<EDITOR>)<TITLE><TERM><COMA><PUBLISHER><TERM><COMA><YEAR><NUMEROS>
-  	[<COMA>(<VOLUME><NUMEROS><COMA>|<NUMBER><NUMEROS><COMA>)<SERIES><TERM><COMA><ADDRESS><TERM><COMA><EDITION><TERM><COMA><MONTH><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA><URL><TERM><COMA>]
-}
-void booklet():
-{}
-{
-	<TITLE><TERM>[<COMA><AUTHOR><TERM><COMA><HOWPUBLISHED><TERM><COMA><ADDRESS><TERM><COMA><MONTH><TERM><COMA><YEAR><NUMEROS><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]
-}
-void conference():
-{}
-{
-	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><BOOKTITLE><TERM><COMA><YEAR><NUMEROS>
-	[<COMA><EDITOR><TERM><COMA>(<VOLUME><NUMEROS><COMA>|<NUMBER><NUMEROS><COMA>)<SERIES><TERM><COMA>
-	<PAGES><NUMBERS><COMA><ADDRESS><TERM><COMA><MONTH><TERM><COMA><ORGANIZATION><TERM><COMA>
-	<PUBLISHER><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]
-}
-void inproceedings():
-{}
-{
-	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><BOOKTITLE><TERM><COMA><YEAR><NUMEROS>
-	[<COMA><EDITOR><TERM><COMA>(<VOLUME><NUMEROS><COMA>|<NUMBER><NUMEROS><COMA>)<SERIES><TERM><COMA>
-	<PAGES><NUMBERS><COMA><ADDRESS><TERM><COMA><MONTH><TERM><COMA><ORGANIZATION><TERM><COMA>
-	<PUBLISHER><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]
+  	[<COMA>(<VOLUME><NUMEROS>|<NUMBER><NUMEROS>)|<COMA><SERIES><TERM>|<COMA><ADDRESS><TERM>|<COMA><EDITION><TERM>|
+  	<COMA><MONTH><TERM>|<COMA><NOTE><TERM>|<COMA><KEY><TERM>|<COMA><URL><TERM>]
 }
 
-void inbook ():
-{}
+void booklet():{}
+{
+	<TITLE><TERM>[<COMA><AUTHOR><TERM>][<COMA><HOWPUBLISHED><TERM>][<COMA><ADDRESS><TERM>][<COMA><MONTH><TERM>][
+	<COMA><YEAR><NUMEROS>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]
+}
+
+void conference():{}
+{
+	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><BOOKTITLE><TERM><COMA><YEAR><NUMEROS>
+	[<COMA><EDITOR><TERM>][(<COMA><VOLUME><NUMEROS>|<COMA><NUMBER><NUMEROS>)][<COMA><SERIES><TERM>][<COMA>
+	<PAGES><NUMEROS>][<COMA><ADDRESS><TERM>][<COMA><MONTH><TERM>][<COMA><ORGANIZATION><TERM>][<COMA>
+	<PUBLISHER><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]
+}
+
+
+void inbook ():{}
 {
 	(<AUTHOR><TERM><COMA>|<EDITOR><TERM><COMA>)<TITLE><TERM><COMA>(<CHAPTER><NUMEROS><COMA>|<PAGES><NUMEROS><COMA>)<PUBLISHER><TERM><COMA><YEAR><NUMEROS>
-	[(<VOLUME><NUMEROS><COMA>|<NUMBER><NUMEROS><COMA>)<SERIES><TERM><COMA><TYPE><TERM><COMA><ADDRESS><TERM><COMA><EDTION><TERM><COMA>
-	<MONTH><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]
+	[(<COMA><VOLUME><NUMEROS>|<COMA><NUMBER><NUMEROS>)][<COMA><SERIES><TERM>][<COMA><TYPE><TERM>][<COMA><ADDRESS><TERM>][<COMA><EDITION><TERM>][<COMA>
+	<MONTH><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]
 }
 
-void incollection ():
-{}
+void incollection ():{}
 {
 	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><BOOKTITLE><TERM><COMA><PUBLISHER><TERM><COMA><YEAR><NUMEROS>
-	[<EDITOR><TERM><COMA>(<VOLUME><NUMEROS><COMA>|<NUMBER><NUMEROS><COMA>)<SERIES><TERM><COMA><TYPE><TERM><COMA><CHAPTER><NUMEROS><COMA><PAGES><NUMEROS><COMA>
-	<ADDRESS><TERM><COMA><EDITION><NUMEROS><COMA><MONTH><TERM><COMA><NOTE><TERM><COMA><KEY><TERM><COMA>]
+	[<COMA><EDITOR><TERM>][(<COMA><VOLUME><NUMEROS>|<COMA><NUMBER><NUMEROS>)][<COMA><SERIES><TERM>][<COMA><TYPE><TERM>][<COMA><CHAPTER><NUMEROS>][
+	<COMA><PAGES><NUMEROS>][<COMA><ADDRESS><TERM>][<COMA><EDITION><NUMEROS>][<COMA><MONTH><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]
 }
+
+void inproceedings():{}
+{
+	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><BOOKTITLE><TERM><COMA><YEAR><NUMEROS>
+	[<COMA><EDITOR><TERM> ][(<COMA><VOLUME><NUMEROS>|<COMA><NUMBER><NUMEROS>)][<COMA><SERIES><TERM>][<COMA>
+	<PAGES><NUMEROS>][<COMA><ADDRESS><TERM>][<COMA><MONTH><TERM>][<COMA><ORGANIZATION><TERM>][<COMA>
+	<PUBLISHER><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><TERM>]
+}
+
+
+ void manual(): {}
+ {
+   <TITLE><TERM>[<COMA ><AUTHOR><TERM> ][ <COMA><ORGANIZATION><TERM> ][ <COMA><ADDRESS ><TERM> ][ <COMA><EDITION ><TERM > ][
+   <COMA><MONTH ><NUMEROS >  ][ <COMA><YEAR ><NUMEROS > ][ <COMA><NOTE ><TERM > ][ <COMA><KEY ><NUMEROS > ]
+ }
+
+
+void masterthesis():{}
+{
+	<AUTHOR ><TERM > <COMA ><TITLE ><TERM ><COMA ><SCHOOL ><TERM ><COMA ><YEAR ><NUMEROS >[ <COMA ><TYPE ><TERM > ][ < COMA ><ADDRESS ><TERM >
+	][  < COMA > <MONTH ><TERM > ][ < COMA ><NOTE ><TERM > ][< COMA > < KEY >< NUMEROS >]
+	
+}
+
+void misc():{}
+{
+	[ <COMA ><AUTHOR ><TERM > ][ < COMA ><TITLE ><TERM >
+	][  < COMA > <HOWPUBLISHED ><TERM > ][ < COMA ><MONTH ><TERM > ][< COMA > < YEAR >< NUMEROS >][ < COMA ><NOTE ><TERM >
+	][ < COMA ><KEY ><NUMEROS >]
+}
+
+void phdthesis():{}
+{
+
+	<AUTHOR ><TERM > <COMA ><TITLE ><TERM ><COMA ><SCHOOL ><TERM ><COMA ><YEAR ><NUMEROS >[ <COMA ><TYPE ><TERM > ][ < COMA ><ADDRESS ><TERM >
+	][  < COMA > <MONTH ><TERM > ][ < COMA ><NOTE ><TERM > ][< COMA > < KEY >< NUMEROS >]
+  
+}
+
+void proceedings():{}
+{
+	<TITLE ><TERM ><COMA ><YEAR ><NUMEROS >
+	[<COMA><EDITOR><TERM>][(<COMA><VOLUME><NUMEROS>|<COMA><NUMBER><NUMEROS>)][<COMA><SERIES><TERM>
+	][<COMA><ADDRESS><TERM>][<COMA><MONTH><TERM>][<COMA><PUBLISHER><TERM>][<COMA><ORGANIZATION><TERM>][<COMA><NOTE><TERM>][<COMA><KEY><NUMEROS>]
+  
+}
+
+ void techreport():{}
+ {
+	<AUTHOR><TERM><COMA><TITLE><TERM><COMA><INSTITUTION><TERM><COMA><YEAR ><TERM >
+	[<COMA ><TYPE > <TERM>][<COMA><NUMBER ><NUMEROS>][<COMA><ADDRESS ><TERM>][<COMA><MONTH ><TERM>][<COMA><NOTE ><TERM>][<COMA><KEY ><TERM>]	  
+ }
+ 
+ void unpublished():{}
+ {
+   <AUTHOR><TERM><COMA><TITLE><TERM><COMA><NOTE><TERM>
+	[ <COMA ><MONTH ><NUMEROS >][<COMA ><YEAR ><NUMEROS >][<COMA ><KEY ><NUMEROS >]
+   
+ }
+
 
 
 

@@ -35,6 +35,1375 @@ public class Grammar implements GrammarConstants {
         System.out.println(e.getMessage());
         break;
       }
+  }
+}
+
+  static final public void inic() throws ParseException {
+    jj_consume_token(ARROBA);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case ARTICLE:
+      jj_consume_token(ARTICLE);
+      break;
+    case BOOK:
+      jj_consume_token(BOOK);
+      break;
+    case BOOKLET:
+      jj_consume_token(BOOKLET);
+      break;
+    case CONFERENCE:
+      jj_consume_token(CONFERENCE);
+      break;
+    case INBOOK:
+      jj_consume_token(INBOOK);
+      break;
+    case INCOLLECTION:
+      jj_consume_token(INCOLLECTION);
+      break;
+    case INPROCEEDINGS:
+      jj_consume_token(INPROCEEDINGS);
+      break;
+    case MANUAL:
+      jj_consume_token(MANUAL);
+      break;
+    case MASTERTHESIS:
+      jj_consume_token(MASTERTHESIS);
+      break;
+    case MISC:
+      jj_consume_token(MISC);
+      break;
+    case PHDTHESIS:
+      jj_consume_token(PHDTHESIS);
+      break;
+    case PROCEEDINGS:
+      jj_consume_token(PROCEEDINGS);
+      break;
+    case TECHREPORT:
+      jj_consume_token(TECHREPORT);
+      break;
+    case UNPUBLISHED:
+      jj_consume_token(UNPUBLISHED);
+      break;
+    default:
+      jj_la1[0] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    jj_consume_token(CORCHAB);
+    jj_consume_token(MINUSCULAS);
+    jj_consume_token(NUMEROS);
+    label_1:
+    while (true) {
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case MINUSCULAS:
+        ;
+        break;
+      default:
+        jj_la1[1] = jj_gen;
+        break label_1;
+      }
+      jj_consume_token(MINUSCULAS);
+    }
+    jj_consume_token(COMA);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case AUTHOR:
+      article();
+      break;
+    case EDITOR:
+      book();
+      break;
+    case TITLE:
+      booklet();
+      break;
+      conference();
+      break;
+      inbook();
+      break;
+      incollection();
+      break;
+      inproceedings();
+      break;
+      manual();
+      break;
+      masterthesis();
+      break;
+    default:
+      jj_la1[2] = jj_gen;
+      misc();
+    }
+    jj_consume_token(CORCHCIER);
+  }
+
+  static final public void article() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(JOURNAL);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    jj_consume_token(COMA);
+    jj_consume_token(VOLUME);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NUMBER);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[3] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PAGES);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[4] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[5] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(DOI);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[6] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[7] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[8] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void book() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case AUTHOR:
+      jj_consume_token(AUTHOR);
+      jj_consume_token(TERM);
+      jj_consume_token(COMA);
+      jj_consume_token(TERM);
+      jj_consume_token(COMA);
+      break;
+    case EDITOR:
+      jj_consume_token(EDITOR);
+      break;
+    default:
+      jj_la1[9] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(PUBLISHER);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case VOLUME:
+          jj_consume_token(VOLUME);
+          jj_consume_token(NUMEROS);
+          break;
+        case NUMBER:
+          jj_consume_token(NUMBER);
+          jj_consume_token(NUMEROS);
+          break;
+        default:
+          jj_la1[10] = jj_gen;
+          jj_consume_token(-1);
+          throw new ParseException();
+        }
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(SERIES);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(ADDRESS);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(EDITION);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(MONTH);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NOTE);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(KEY);
+        jj_consume_token(TERM);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(URL);
+        jj_consume_token(TERM);
+        break;
+      default:
+        jj_la1[11] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[12] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void booklet() throws ParseException {
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(AUTHOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[13] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(HOWPUBLISHED);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[14] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[15] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[16] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(YEAR);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[17] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[18] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[19] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void conference() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(BOOKTITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[20] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        jj_consume_token(VOLUME);
+        jj_consume_token(NUMEROS);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NUMBER);
+        jj_consume_token(NUMEROS);
+        break;
+      default:
+        jj_la1[21] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[22] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(SERIES);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[23] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PAGES);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[24] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[25] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[26] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ORGANIZATION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[27] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PUBLISHER);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[28] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[29] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[30] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void inbook() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case AUTHOR:
+      jj_consume_token(AUTHOR);
+      jj_consume_token(TERM);
+      jj_consume_token(COMA);
+      break;
+    case EDITOR:
+      jj_consume_token(EDITOR);
+      jj_consume_token(TERM);
+      jj_consume_token(COMA);
+      break;
+    default:
+      jj_la1[31] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case CHAPTER:
+      jj_consume_token(CHAPTER);
+      jj_consume_token(NUMEROS);
+      jj_consume_token(COMA);
+      break;
+    case PAGES:
+      jj_consume_token(PAGES);
+      jj_consume_token(NUMEROS);
+      jj_consume_token(COMA);
+      break;
+    default:
+      jj_la1[32] = jj_gen;
+      jj_consume_token(-1);
+      throw new ParseException();
+    }
+    jj_consume_token(PUBLISHER);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        jj_consume_token(VOLUME);
+        jj_consume_token(NUMEROS);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NUMBER);
+        jj_consume_token(NUMEROS);
+        break;
+      default:
+        jj_la1[33] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[34] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(SERIES);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[35] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TYPE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[36] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[37] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[38] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[39] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[40] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[41] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void incollection() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(BOOKTITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(PUBLISHER);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[42] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        jj_consume_token(VOLUME);
+        jj_consume_token(NUMEROS);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NUMBER);
+        jj_consume_token(NUMEROS);
+        break;
+      default:
+        jj_la1[43] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[44] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(SERIES);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[45] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TYPE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[46] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(CHAPTER);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[47] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PAGES);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[48] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[49] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITION);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[50] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[51] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[52] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[53] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void inproceedings() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(BOOKTITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[54] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        jj_consume_token(VOLUME);
+        jj_consume_token(NUMEROS);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NUMBER);
+        jj_consume_token(NUMEROS);
+        break;
+      default:
+        jj_la1[55] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[56] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(SERIES);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[57] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PAGES);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[58] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[59] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[60] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ORGANIZATION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[61] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PUBLISHER);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[62] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[63] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[64] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void manual() throws ParseException {
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(AUTHOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[65] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ORGANIZATION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[66] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[67] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[68] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[69] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(YEAR);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[70] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[71] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[72] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void masterthesis() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(SCHOOL);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TYPE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[73] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[74] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[75] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[76] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[77] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void misc() throws ParseException {
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(AUTHOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[78] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TITLE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[79] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(HOWPUBLISHED);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[80] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[81] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(YEAR);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[82] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[83] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[84] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void phdthesis() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(SCHOOL);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TYPE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[85] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[86] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[87] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[88] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[89] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void proceedings() throws ParseException {
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(NUMEROS);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(EDITOR);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[90] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case COMA:
+        jj_consume_token(COMA);
+        jj_consume_token(VOLUME);
+        jj_consume_token(NUMEROS);
+        break;
+        jj_consume_token(COMA);
+        jj_consume_token(NUMBER);
+        jj_consume_token(NUMEROS);
+        break;
+      default:
+        jj_la1[91] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
+      break;
+    default:
+      jj_la1[92] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(SERIES);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[93] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[94] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[95] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(PUBLISHER);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[96] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ORGANIZATION);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[97] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[98] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[99] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void techreport() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(INSTITUTION);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(YEAR);
+    jj_consume_token(TERM);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(TYPE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[100] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NUMBER);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[101] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(ADDRESS);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[102] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[103] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(NOTE);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[104] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(TERM);
+      break;
+    default:
+      jj_la1[105] = jj_gen;
+      ;
+    }
+  }
+
+  static final public void unpublished() throws ParseException {
+    jj_consume_token(AUTHOR);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(TITLE);
+    jj_consume_token(TERM);
+    jj_consume_token(COMA);
+    jj_consume_token(NOTE);
+    jj_consume_token(TERM);
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(MONTH);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[106] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(YEAR);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[107] = jj_gen;
+      ;
+    }
+    switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case COMA:
+      jj_consume_token(COMA);
+      jj_consume_token(KEY);
+      jj_consume_token(NUMEROS);
+      break;
+    default:
+      jj_la1[108] = jj_gen;
+      ;
     }
   }
 
@@ -48,13 +1417,18 @@ public class Grammar implements GrammarConstants {
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[0];
+  static final private int[] jj_la1 = new int[109];
   static private int[] jj_la1_0;
+  static private int[] jj_la1_1;
   static {
       jj_la1_init_0();
+      jj_la1_init_1();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {};
+      jj_la1_0 = new int[] {0x7ffe00,0x0,0x1800000,0x0,0x0,0x0,0x0,0x0,0x0,0x800000,0x28000000,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x800000,0x40000000,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,0x0,};
+   }
+   private static void jj_la1_init_1() {
+      jj_la1_1 = new int[] {0x0,0x100000,0x8,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8,0x0,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8,0x80,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,0x8000,};
    }
 
   /** Constructor with InputStream. */
@@ -75,7 +1449,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -89,7 +1463,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -106,7 +1480,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -116,7 +1490,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -132,7 +1506,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -141,7 +1515,7 @@ public class Grammar implements GrammarConstants {
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 0; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 109; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -192,21 +1566,24 @@ public class Grammar implements GrammarConstants {
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[9];
+    boolean[] la1tokens = new boolean[55];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 0; i++) {
+    for (int i = 0; i < 109; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
             la1tokens[j] = true;
           }
+          if ((jj_la1_1[i] & (1<<j)) != 0) {
+            la1tokens[32+j] = true;
+          }
         }
       }
     }
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 55; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;
